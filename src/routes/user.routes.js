@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { registerUser } from "../controllers/user.controllers";
+import { registerUser } from "../controllers/user.controllers.js";
 import {upload} from '../middlewares/multer.middlewares.js'
 
 const router = Router()
@@ -18,4 +18,4 @@ router.route("/register").post(
     ]),    //=> we are using fileds because we are required avater and cover image of user.
      registerUser )
 
-export default router
+export default router;

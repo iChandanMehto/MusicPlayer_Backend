@@ -22,8 +22,10 @@ const uploadOnCloudinary = async (localFilePath)=>{ // => this is for whenever y
         fs.unlinkSync(localFilePath)
         return response
     } catch (error) {
-        fs.unwatchFile(localFilePath)
+        fs.unlinkSync(localFilePath)
         return null
     }
 }
+
+export {uploadOnCloudinary}
 
