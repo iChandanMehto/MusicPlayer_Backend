@@ -20,9 +20,9 @@ app.use(express.static("public"))
 app.use(cookieParser())
 
 
-
 import  userRouter from './routes/user.routes.js'
 import { errorHandler } from "./middlewares/error.middlewares.js";
+import { registerUser } from "./controllers/user.controllers.js";
 
 
 //routes

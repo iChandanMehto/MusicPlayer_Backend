@@ -50,7 +50,8 @@ refreshToken:{
 )
 
 userSchema.pre("Save", async function (next){
-if(!this.modified("password")) return next() //=> if modified field is not password than it will return.
+    //=> fixed in 
+if(!this.isModified("password")) return next() //=> if modified field is not password than it will return.
     
     this.password = bcrypt.hash(this.password, 10) //=> here we are using 10 round of hasing.
     next()
