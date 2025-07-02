@@ -1,4 +1,4 @@
-# 🚀 Music Player Backend
+# 🎶 Music Player Backend 🎼
 
 A backend service built with Node.js and Express that Manage user login , user profile , playlist & authentication.
 
