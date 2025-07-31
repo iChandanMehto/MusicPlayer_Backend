@@ -192,7 +192,6 @@ const logoutUser = asyncHandler(async(req, res)=>{
     .json(new ApiResponse(200, {}, "User logged out successfully"))
 })
 
-
 const refreshAccessToken = asyncHandler(async(req, res)=>{
     const incomingRefreshToken = req.cookie.refreshToken || req.body.refreshToken
 
@@ -314,6 +313,8 @@ const updateUserAvatar= asyncHandler(async(req, res)=>{
  res.status(200).json(new ApiResponse(200, user, "Avatar updated successfully"))
 })
 
+
+
 const updateUserCoverImage= asyncHandler(async(req, res)=>{
     const coverImageLocalPath =req.file?.path
 
@@ -340,6 +341,24 @@ const updateUserCoverImage= asyncHandler(async(req, res)=>{
 })
 
 
+const getUserChannelProfile = asyncHandler(async(req, res)=>{
+   const {username} =  req.params
+   if(!username?.trim()){
+    throw new ApiError(400, "username is required")
+   }
+
+   const channel = await User.aggregate(
+    [
+      {
+          $match:{
+            username: username?.toLowerCase()
+        }
+      },
+    ]
+   )
+})
+
+
 export{
     registerUser ,
     loginUser,
@@ -350,5 +369,5 @@ export{
     updateAccountDetails,
     updateUserAvatar,
     updateUserCoverImage,
-    
+    getUserChannelProfile
 }
